@@ -5,7 +5,7 @@ const int RELAYPIN = 2;
 const int SPKPIN   = 9;
 const int DHTPIN   = 7;
 
-//const int beepDelay    = 500;  // microseconds
+const int beepDelay      = 200;  // microseconds
 const int humThreshold   = 85;   // percent
 const long debounceDelay = 10*60000;// milliseconds
 
@@ -62,10 +62,11 @@ void loop()
 
     if (hum < humThreshold){
       tone(SPKPIN, 1000);
+      delay(beepDelay);
+      noTone(SPKPIN);
       Serial.println("SPK ON");
     }
     else {
-      noTone(SPKPIN);
       Serial.println("SPK OFF");
     }
 
